@@ -1,0 +1,52 @@
+# Noises
+gaussian_noise
+shot_noise
+impulse_noise
+
+# Blurring
+defocus_blur
+motion_blur
+zoom_blur
+gaussian_blur
+
+# Compression and artifacts
+jpeg_compression
+
+# Brightness and contrast
+brightness
+contrast
+saturate
+
+# Spatial distortions
+spatter
+speckle_noise
+
+
+  Id CommandLine
+  -- -----------
+   1 try { . "c:\Users\User\AppData\Local\Programs\Microsoft VS Code\072586267e\resources\app\out\vs\workbench\contrib\terminal\common\scripts\shellIntegration.ps1" } catch {}
+   2 & D:/Projects/odnn15_corrupt/venv/Scripts/Activate.ps1
+   3 & d:\Projects\odnn15_corrupt\venv\Scripts\Activate.ps1
+   4 & D:/Projects/odnn15_corrupt/venv/Scripts/python.exe d:/Projects/odnn15_corrupt/image_corruption.py
+   5 & D:/Projects/odnn15_corrupt/venv/Scripts/python.exe d:/Projects/odnn15_corrupt/image_corruption.py
+   6 & D:/Projects/odnn15_corrupt/venv/Scripts/python.exe d:/Projects/odnn15_corrupt/image_corruption.py
+   7 & D:/Projects/odnn15_corrupt/venv/Scripts/python.exe d:/Projects/odnn15_corrupt/image_corruption.py
+   8 & D:/Projects/odnn15_corrupt/venv/Scripts/python.exe d:/Projects/odnn15_corrupt/image_corruption.py
+   9 python image_corruption.py --help
+  10 & D:/Projects/odnn15_corrupt/venv/Scripts/python.exe d:/Projects/odnn15_corrupt/image_corruption.py
+  11 & D:/Projects/odnn15_corrupt/venv/Scripts/python.exe d:/Projects/odnn15_corrupt/image_corruption.py
+  12 & D:/Projects/odnn15_corrupt/venv/Scripts/python.exe d:/Projects/odnn15_corrupt/image_corruption.py
+  13 & D:/Projects/odnn15_corrupt/venv/Scripts/python.exe d:/Projects/odnn15_corrupt/image_corruption.py --test
+  14 & D:/Projects/odnn15_corrupt/venv/Scripts/python.exe d:/Projects/odnn15_corrupt/image_corruption.py
+  15 & D:/Projects/odnn15_corrupt/venv/Scripts/python.exe d:/Projects/odnn15_corrupt/image_corruption.py --test
+  16 & D:/Projects/odnn15_corrupt/venv/Scripts/python.exe d:/Projects/odnn15_corrupt/image_corruption.py
+  17 & D:/Projects/odnn15_corrupt/venv/Scripts/python.exe d:/Projects/odnn15_corrupt/image_corruption.py --test
+  18 docker build -t mirror-filters:1.0.0 .
+  19 docker build -t mirror-filters:1.0.0 .
+  20 docker run -it --name image-filter mirror-filter bash
+  21 docker run -it --name image-filter mirror-filters bash
+  22 docker run -it --name image-filter mirror-filters:1.0.0 bash
+  23 docker exec -it image-filter python image_corruption.py --test
+  24 docker exec -it image-filter python image_set_filter.py --test
+  25 docker run -it --name image-filter mirror-filters:1.0.0 bash
+  26 docker exec -it image-filter bash
