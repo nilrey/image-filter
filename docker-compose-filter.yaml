@@ -1,0 +1,18 @@
+# docker-compose.yaml
+version: '3.8'
+services:
+  image-filter2:
+    image: mirror-filters:1.0.2
+    container_name: image-filter2
+    networks:
+      - clearml_frontend
+      - clearml_backend
+    volumes:
+      - ./clearml.conf:/root/clearml.conf:ro
+    command: clearml-agent execute --id ca89e08789384c5bac7c42cf35122d0c
+
+networks:
+  clearml_frontend:
+    external: true
+  clearml_backend:
+    external: true

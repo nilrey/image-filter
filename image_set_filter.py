@@ -4,9 +4,15 @@ from pathlib import Path
 import cv2
 import numpy as np
 from imagecorruptions import corrupt
+from clearml import Task, Dataset, Logger
 
 
 def add_noise(input_video, output_video, corruption_type='gaussian_noise', severity=1):
+    task = Task.init(
+        project_name='Image Filter Proccess', 
+        task_name='Gaussian Noise Filter',
+        task_type=Task.TaskTypes.inference)
+    
     # Функция добавляет шум к видео
     cap = cv2.VideoCapture(input_video)
     
@@ -42,6 +48,9 @@ def add_noise(input_video, output_video, corruption_type='gaussian_noise', sever
     
     print(f"Обработка завершена. Файл: {output_video}")
 
+    task.close()
+
+    
 def parse_args():
     parser = argparse.ArgumentParser(description="Добавление шума к видеофайлам")
     parser.add_argument(
