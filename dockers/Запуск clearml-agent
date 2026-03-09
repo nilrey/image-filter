@@ -1,0 +1,46 @@
+docker compose -f docker-agent.yml up -d
+
+зайти в контейнер, запустить команду:
+cp /root/.clearml/clearml.conf /root/clearml.conf
+
+следующая команда:
+clearml-agent init
+
+# ввести данные из clearml.conf :
+# api {
+#     api_server: http://apiserver:8008/
+#     web_server: http://webserver:8080/
+#     files_server: http://fileserver:8081/
+#     credentials {
+#     "access_key" = "N2QD8DEZBYCZWFZV3FXVB4QYIJPL68"
+#     "secret_key" = "qfmHd_HXL5ed5mjkVKvyJjdnlEAnziHiZS7yV8L2gtgO3v8_J6cvohn6PryygEJbqrM"
+#     }
+# }
+# Возникнет диалог с вопросами:
+# Detected credentials key="N2QD8DEZBYCZWFZV3FXVB4QYIJPL68" secret="qfmH***"
+# WEB Host configured to: [http://webserver:8080/] 
+# API Host configured to: [http://webserver:8008/] http://apiserver:8008/
+# File Store Host configured to: [http://webserver:8081/] http://fileserver:8081/
+# Если успешно:
+# Credentials verified!
+
+# На остальные вопросы :
+# по умолчанию жми Enter
+# CLEARML-AGENT setup completed successfully.
+
+По окончании установки, подключить к queue :
+; clearml-agent daemon --docker docker-agent-base:1.0.0 --queue default #--docker-rm=false
+clearml-agent daemon --queue default #--docker-rm=false
+Ответ: 
+Worker "clearml_worker_detection:gpuall" - Listening to queues:
++----------------------------------+---------+-------+
+| id                               | name    | tags  |
++----------------------------------+---------+-------+
+| e8a95a6960854142a737246742164945 | default |       |
++----------------------------------+---------+-------+
+
+Running CLEARML-AGENT daemon in background mode, writing stdout/stderr to /tmp/.clearml_agent_daemon_out_ly84hq4.txt
+
+Процесс останется висеть.
+
+Далее по процессам, для теста. Запустить Task "enqueue" default. В workers & queues будут наблюдаться процессы запуска - изменятся графики. В разделе workers должен отображаться запущенный worker с именем из docker-compose-agent

@@ -1,0 +1,39 @@
+version: "3.6"
+
+services:
+  clearml-worker:
+    image: allegroai/clearml-agent:latest
+    container_name: clearml-worker-detection
+    restart: unless-stopped
+    networks:
+      - backend
+      - front
+    environment:
+      - PYTHONIOENCODING=utf-8
+      - LANG=C.UTF-8
+      - LC_ALL=C.UTF-8    
+      - CLEARML_WORKER_NAME=clearml_worker_detection
+      - CLEARML_AGENT_DEFAULT_BASE_DOCKER=python:3.8-slim
+      - CLEARML_AGENT_QUEUES=default
+      - CLEARML_AGENT_DAEMON_LOG_FILE=
+    volumes:
+      - C:/Projects/clearml/.clearml:/root/.clearml
+      - C:/Projects/clearml/.clearml/clearml.conf:/root/clearml.conf
+      - /var/run/docker.sock:/var/run/docker.sock
+      - clearml-pip-cache:/root/.cache/pip
+      - clearml-apt-cache:/var/cache/apt/archives
+      - clearml-vcs-cache:/root/.clearml/vcs-cache
+    command: clearml-agent daemon --queue default
+
+volumes:
+  clearml-pip-cache:
+  clearml-apt-cache:
+  clearml-vcs-cache:
+
+networks:
+  backend:
+    external: true
+    name: clearml_backend
+  front:
+    external: true
+    name: clearml_frontend

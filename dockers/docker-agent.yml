@@ -1,0 +1,41 @@
+version: "3.6"
+
+services:
+# запуск ClearML. docker-compose из проекта clearml
+# убедиться что сервис agent-services поднят
+
+  clearml-worker:
+    image: allegroai/clearml-agent:latest
+    # image: docker-agent-base:1.0.0
+    container_name: clearml-worker-detection
+    restart: unless-stopped
+    networks:
+      - backend
+      - front
+    environment:
+      - PYTHONIOENCODING=utf-8
+      - LANG=C.UTF-8
+      - LC_ALL=C.UTF-8    
+      - CLEARML_WORKER_NAME=clearml_worker_detection
+      - CLEARML_AGENT_DEFAULT_BASE_DOCKER=docker-agent-base:1.0.0
+      - CLEARML_AGENT_QUEUES=default
+      - CLEARML_AGENT_FORCE_TASK_DOCKER=true
+    volumes:
+      - C:/Projects/clearml/.clearml:/root/.clearml
+      - C:/Projects/clearml/.clearml/clearml.conf:/root/clearml.conf
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: clearml-agent daemon --queue default
+
+volumes:
+  clearml-pip-cache:
+  clearml-apt-cache:
+  clearml-vcs-cache:
+
+networks:
+  backend:
+    external: true
+    name: clearml_backend
+  front:
+    external: true
+    name: clearml_frontend
+

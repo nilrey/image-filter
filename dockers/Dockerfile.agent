@@ -1,0 +1,4 @@
+FROM allegroai/clearml-agent:latest
+
+# Копируем конфиг сразу в образ
+COPY C:/Projects/clearml/.clearml/clearml.conf /root/clearml.conf
